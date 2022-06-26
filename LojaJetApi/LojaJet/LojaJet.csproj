@@ -34,10 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\LojaJet.BLL\LojaJet.BLL.csproj" />
     <ProjectReference Include="..\LojaJet.IoC\LojaJet.IoC.csproj" />
     <ProjectReference Include="..\LojaJet.Models\LojaJet.Models.csproj" />

@@ -15,4 +15,10 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LojaJet.BLL.Infra\LojaJet.BLL.Infra.csproj" />
+    <ProjectReference Include="..\LojaJet.BLL\LojaJet.BLL.csproj" />
+    <ProjectReference Include="..\LojaJet.Repository\LojaJet.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

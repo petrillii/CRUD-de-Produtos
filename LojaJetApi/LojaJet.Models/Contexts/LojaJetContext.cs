@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LojaJet.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace LojaJet.Models.Contexts
 
         }
         #region DbSets
-
+        public virtual DbSet<ProductEntity> product { get; set; }
 
         #endregion
 

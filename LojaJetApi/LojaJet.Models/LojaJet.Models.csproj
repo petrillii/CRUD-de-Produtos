@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Dto\Response\" />
-    <Folder Include="Entities\" />
     <Folder Include="Enum\" />
     <Folder Include="Migrations\" />
     <Folder Include="Migrations_sql\" />
