@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-item.component.scss']
 })
 export class CreateItemComponent implements OnInit {
-
+  file!: File;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  onChange(event: any){
+    this.file = event.target.files[0];
+  }
 }

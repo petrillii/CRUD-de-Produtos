@@ -12,8 +12,10 @@ export class ProductService {
     private http: HttpClient
   ) { }
 
-  InsertProduct(product: InsertProductModel):Observable<any>{
+  InsertProduct(product: File):Observable<any>{
     let url = environment.linkApi + '/Product'
+    const formData = new FormData();
+    formData.append("product", product, product.name);
     return this.http.post(url, product);
   }
 
