@@ -28,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LojaJet.BLL.Infra\LojaJet.BLL.Infra.csproj" />
     <ProjectReference Include="..\LojaJet.Models\LojaJet.Models.csproj" />
+    <ProjectReference Include="..\LojaJet.Repository.Infra\LojaJet.Repository.Infra.csproj" />
   </ItemGroup>
 
 </Project>

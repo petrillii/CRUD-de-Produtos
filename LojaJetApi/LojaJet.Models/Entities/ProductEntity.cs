@@ -13,6 +13,8 @@ namespace LojaJet.Models.Entities
     {
         [Key]
         public int id_product { get; set; }
+        public Byte[] principal_img { get; set; }
+        public Byte[] secundary_img { get; set; }
         public string nm_product { get; set; }
         public string ds_product { get; set; }
         public int inventory { get; set; }

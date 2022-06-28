@@ -29,6 +29,7 @@ namespace LojaJet
             services.RegisterWebApiServices();
             services.RegisterPolicies();
             services.AddJWTAuth(Configuration);
+            services.AddCors();
             services.AddMvc();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSwaggerGen(c =>
@@ -78,6 +79,10 @@ namespace LojaJet
         {
             if (environment.IsDevelopment())
                 app.UseDeveloperExceptionPage();
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
             app.UseCustomExceptionHandler();
             app.UseHttpsRedirection();
             app.UseAuthorization();

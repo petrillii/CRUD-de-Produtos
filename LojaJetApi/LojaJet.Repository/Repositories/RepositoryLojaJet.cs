@@ -7,7 +7,7 @@ namespace RepositoryLojaJet.Repository.Repositories
     /// Metodo usado para herança somente de entidades no banco e não para entidades compostas
     /// </summary>
     /// <typeparam name="TEntity">Entidade generica representando uma tabela no banco</typeparam>
-    public class RepositoryLojaJet<TEntity>: IRepositoryLojaJet<TEntity> where TEntity : class
+    public class RepositoryLojaJet<TEntity> : IRepositoryLojaJet<TEntity> where TEntity : class
     {
         protected readonly LojaJetContext _ctx;
         /// <summary>

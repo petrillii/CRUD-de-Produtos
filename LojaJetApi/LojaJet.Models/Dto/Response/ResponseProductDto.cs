@@ -1,31 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LojaJet.Models.Dto
+namespace LojaJet.Models.Dto.Response
 {
-    public class ProductDto
+    public class ResponseProductDto
     {
-        [Required]
-        public string nm_product { get; set; }
-        [Required]
+        public int id_product { get; set; }
         public Byte[] principal_img { get; set; }
-        [Required]
         public Byte[] secundary_img { get; set; }
-        [Required]
+        public string nm_product { get; set; }
         public string ds_product { get; set; }
-        [Required]
         public int inventory { get; set; }
-        [Required]
         public bool status { get; set; }
-        [Required]
         public double price { get; set; }
-        [Required]
         public double promocional_price { get; set; }
-
-
     }
 }

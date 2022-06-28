@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LojaJet.Models.Dto;
+using LojaJet.Models.Dto.Response;
 using LojaJet.Models.Entities;
 
 namespace SquadHealthCheck.BLL.AutoMapping
@@ -9,7 +10,7 @@ namespace SquadHealthCheck.BLL.AutoMapping
         public AutoMappingBLL()
         {
             CreateMap<ProductEntity, ProductDto>().ReverseMap();
+            CreateMap<ProductEntity, ResponseProductDto>().ReverseMap();
         }
-        
     }
 }
