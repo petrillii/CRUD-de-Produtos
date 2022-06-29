@@ -42,6 +42,13 @@ namespace LojaJet.BLL.Services
             await productRepo.Create(_product);
         }
 
+        public async Task<ResponseProductDto> GetProductById(int id)
+        {
+            var productEntity = await productRepo.GetById(id);
+            var response = mapper.Map<ProductEntity, ResponseProductDto>(productEntity);
+            return response;
+        }
+
         public async Task<List<ResponseProductDto>> GetProducts()
         {
             var productEntity = await productRepo.GetAll();
@@ -49,5 +56,11 @@ namespace LojaJet.BLL.Services
             return products;
         }
 
+        public async Task UpdateProduct(UpdateProductDto product)
+        {
+            
+            var productEntity = await productRepo.GetById(product.id_product);
+            
+        }
     }
 }

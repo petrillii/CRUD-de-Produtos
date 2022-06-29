@@ -26,9 +26,9 @@ namespace LojaJet.Controllers
             return Ok(await srvc.GetProducts());
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProductById()
+        public async Task<IActionResult> GetProductById(int id)
         {
-            return Ok();
+            return Ok(await srvc.GetProductById(id));
         }
         [HttpPost]
         public async Task<IActionResult> CreateProduct([FromForm]ProductDto product)
@@ -48,11 +48,11 @@ namespace LojaJet.Controllers
             }
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateProduct([FromBody] ProductDto product)
+        public async Task<IActionResult> UpdateProduct([FromForm] UpdateProductDto product)
         {
             try
             {
-             
+                await srvc.UpdateProduct(product);
                 return await Task.FromResult(Ok("Produto atualizado com sucesso!"));
             }
             catch (ArgumentException ex)
@@ -63,24 +63,6 @@ namespace LojaJet.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro ao atualizar o produto");
             }
-        }
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProduct([FromRoute] int id)
-        {
-            try
-            {
-                
-                return await Task.FromResult(Ok("Produto deletado com sucesso!"));
-            }
-            catch (ArgumentException ex)
-            {
-                return StatusCode(StatusCodes.Status400BadRequest, ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Ocorreu um erro ao deletar o produto");
-            }
-
         }
     }
 }

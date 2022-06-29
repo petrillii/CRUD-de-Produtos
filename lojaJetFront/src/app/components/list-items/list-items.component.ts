@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ProductModel } from 'src/app/models/insertproduct.model';
+import { Router } from '@angular/router';
+import { ProductModel } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class ListItemsComponent implements OnInit {
   products: ProductModel[] = [];
   constructor(
     private srvc: ProductService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -21,17 +23,12 @@ export class ListItemsComponent implements OnInit {
       products.forEach((product: ProductModel) => {
         product.principal_img = 'data:image/png;base64,'+product.principal_img;
         product.secundary_img = 'data:image/png;base64,'+product.secundary_img;
-
-        /* const img_principal = new File([product.principal_img], 'image.jpeg', {
-          type: product.principal_img.type,
-        });
-        product.principal_img = img_principal;
-        const img_secundary = new File([product.secundary_img], 'image.jpeg', {
-          type: product.secundary_img.type,
-        });
-        product.secundary_img = img_secundary; */
       })
-      this.products = products;
+      this.products = products.filter((s: { status: boolean; }) => s.status);
     });
+  }
+
+  detailsItem(id: number){
+    this.router.navigate(['/product-details/'+ id]);
   }
 }

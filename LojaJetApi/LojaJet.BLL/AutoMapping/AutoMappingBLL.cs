@@ -11,6 +11,7 @@ namespace SquadHealthCheck.BLL.AutoMapping
         {
             CreateMap<ProductEntity, ProductDto>().ReverseMap();
             CreateMap<ProductEntity, ResponseProductDto>().ReverseMap();
+            CreateMap<ProductEntity, UpdateProductDto>().ReverseMap();
         }
     }
 }

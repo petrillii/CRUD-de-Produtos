@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { ItemDetailsComponent } from './components/item-details/item-details.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     FooterComponent,
     ListItemsComponent,
     CreateItemComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,

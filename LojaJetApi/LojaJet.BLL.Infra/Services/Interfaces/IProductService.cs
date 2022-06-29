@@ -12,5 +12,7 @@ namespace LojaJet.BLL.Infra.Services.Interfaces
     {
         Task<List<ResponseProductDto>> GetProducts();
         Task CreateProduct(ProductDto product);
+        Task<ResponseProductDto> GetProductById(int id);
+        Task UpdateProduct(UpdateProductDto product);
     }
 }
