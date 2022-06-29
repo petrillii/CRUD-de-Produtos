@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreateItemComponent } from './components/create-item/create-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SafeHtmlPipe } from './pipe/safe-html.pipe';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { SafeHtmlPipe } from './pipe/safe-html.pipe';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

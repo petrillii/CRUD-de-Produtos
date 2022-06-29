@@ -39,14 +39,14 @@
             <div class="col-6">
               <span>Principal</span>
               <div class="container-img" #divBanner id="containerfile">
-                <input class="input-image form-control" type="file" #inputFile id="inputfile" accept="image/*" (change)="onFilePrincipalChange($event)" formControlName="principal_img">
+                <input class="input-image form-control" type="file" #inputFile id="inputfile" accept="image/*" (change)="onFilePrincipalChange($event)" formControlName="img_principal">
                 <span class="input-ds" *ngIf="invalidImage == true"><label for="file">Selecione a imagem</label></span>
               </div>
             </div>
             <div class="col-6">
               <span>Alternativo</span>
               <div class="container-img" #divBannerSecundary id="containerSecundaryfile">
-                <input class="input-image form-control" type="file" #inputSecundaryFile id="inputSecundaryFile"  accept="image/*" (change)="onFileSecundaryChange($event)" formControlName="secundary_img">
+                <input class="input-image form-control" type="file" #inputSecundaryFile id="inputSecundaryFile"  accept="image/*" (change)="onFileSecundaryChange($event)" formControlName="img_secundary">
                 <span class="input-ds" *ngIf="invalidPImage == true"><label for="file">Selecione a imagem</label></span>
               </div>
             </div>

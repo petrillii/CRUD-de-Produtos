@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -13,14 +14,15 @@ export class CreateItemComponent implements OnInit {
   @ViewChild('inputFile') inputElement!: ElementRef;
   @ViewChild('divBannerSecundary') divSecundaryBannerElement!: ElementRef;
   @ViewChild('inputSecundaryFile') inputSecundaryElement!: ElementRef;
-  principal_img!: File;
-  secundary_img!: File;
+  img_principal!: File;
+  img_secundary!: File;
   invalidImage: boolean = true;
   invalidPImage: boolean = true;
   form: FormGroup = this.getForm();
   constructor(
     private router: Router,
-    private srvc: ProductService
+    private srvc: ProductService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -34,8 +36,8 @@ export class CreateItemComponent implements OnInit {
       price: new FormControl('',[Validators.required]),
       promotional_price: new FormControl('', [Validators.required]),
       ds_product: new FormControl('', [Validators.required]),
-      principal_img: new FormControl(this.principal_img, [Validators.required]),
-      secundary_img: new FormControl(this.secundary_img, [Validators.required]),
+      img_principal: new FormControl(this.img_principal, [Validators.required]),
+      img_secundary: new FormControl(this.img_secundary, [Validators.required]),
     })
   }
 
@@ -52,7 +54,7 @@ export class CreateItemComponent implements OnInit {
 
         if (width >= 1000  && height >= 1000) {
           this.invalidImage = false;
-          this.principal_img = event.target.files[0];
+          this.img_principal = event.target.files[0];
           this.divBannerElement.nativeElement.style.setProperty(
             'background-image',
             `url("${eventReader.target.result}")`
@@ -97,7 +99,7 @@ export class CreateItemComponent implements OnInit {
 
         if (width >= 1000  && height >= 1000) {
           this.invalidPImage = false;
-          this.secundary_img = event.target.files[0];
+          this.img_secundary = event.target.files[0];
           this.divSecundaryBannerElement.nativeElement.style.setProperty(
             'background-image',
             `url("${eventReader.target.result}")`
@@ -115,17 +117,22 @@ export class CreateItemComponent implements OnInit {
     let formData = new FormData();
     let form = this.form.getRawValue();
     console.log(form)
-    formData.append('nm_product', form.name);
-    formData.append('principal_img', form.principal_img);
-    formData.append('secundary_img', form.secundary_img);
+    formData.append('nm_product', form.nm_product);
+    formData.append('img_principal', this.img_principal);
+    formData.append('img_secundary', this.img_secundary);
     formData.append('ds_product', form.description);
     formData.append('inventory', form.inventory);
     formData.append('status', form.status);
     formData.append('price', form.price);
     formData.append('promotional_price', form.promotional_price);
     console.log(formData);
-    this.srvc.InsertProduct(formData).subscribe(res=>{
-
+    this.srvc.InsertProduct(formData).subscribe({
+      error: (error: any) => {
+        this.toastr.error(error.error, 'Erro');
+      },
+      next: (res: string) => {
+        this.toastr.success(res, 'Produto cadastrado com sucesso!');
+      }
     })
   }
 
