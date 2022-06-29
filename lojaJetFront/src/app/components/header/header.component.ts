@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  backHome(){
+    this.router.navigate(['/']);
+  }
   createProduct(){
     this.router.navigate(['/create-product']);
   }

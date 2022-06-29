@@ -83,8 +83,55 @@ input:checked + .slider:before {
   border: none;
 }
 
+.img-alert{
+  height: 40px;
+}
+
+.container-img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: rgb(227, 227, 246);
+  height: 17.25rem;
+  border-radius: .625rem;
+}
+
 .input-image{
-  
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  cursor: pointer;
+  height: 17.25rem;
+}
+
+.submit-form{
+  margin-top: 30px;
+}
+
+.div-submit{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.button{
+  &-cancel{
+    border: none;
+    height: 30px;
+  }
+  &-submit{
+    border: none;
+    color: #fff;
+    background-color:rgb(68, 68, 154);
+    height: 40px;
+    border-radius: 10px;
+  }
 }
 
 h2{

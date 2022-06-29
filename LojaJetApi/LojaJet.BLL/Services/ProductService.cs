@@ -22,6 +22,23 @@ namespace LojaJet.BLL.Services
         public async Task CreateProduct(ProductDto product)
         {
             ProductEntity _product = mapper.Map<ProductDto, ProductEntity>(product);
+
+            if (product.img_principal.Length > 0 && product.img_secundary.Length > 0)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    product.img_principal.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    _product.principal_img = fileBytes;
+                }
+                using (var ms = new MemoryStream())
+                {
+                    product.img_secundary.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    _product.secundary_img = fileBytes;
+                }
+            }
+
             await productRepo.Create(_product);
         }
 

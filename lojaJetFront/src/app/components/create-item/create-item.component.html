@@ -1,60 +1,72 @@
 <div class="container-fluid">
-  <div class="form p-5">
-    <div class="row">
-      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-        <h2>Informações Principais</h2>
-        <div class="status">
-          <span>Status</span>
-          <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-          </label>
-        </div>
-        <span> Nome do Produto</span>
-        <input class="nm-product mb-4 w-100" type="text">
-        <div class="row">
-          <div class="col-4">
-            <span>Estoque</span>
-            <input class="input-info w-100" type="text">
+  <form (ngSubmit)="onSubmit()" class="form" [formGroup]="form">
+    <div class="form p-5">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <h2>Informações Principais</h2>
+          <div class="status">
+            <span>Status</span>
+            <label class="switch">
+              <input type="checkbox" formControlName="status">
+              <span class="slider"></span>
+            </label>
           </div>
-          <div class="col-4">
-            <span>Preço</span>
-            <input class="input-info w-100" type="text">
-          </div>
-          <div class="col-4 mb-5">
-            <span>Preço Promocional</span>
-            <input class="input-info w-100" type="text">
-          </div>
-          <h2 class="mb-4">Informações Adicionais</h2>
-          <div>
-            <span class="mb-1">Breve Descrição</span>
-            <textarea class="description w-100" name="description" id="description" cols="30" rows="10"></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-        <h2>Imagens Principais</h2>
-        <div class="row mb-5">
-          <div class="col-6">
-            <span>Principal</span>
-            <input class="input-image form-control" type="file"
-            (change)="onChange($event)">
-          </div>
-          <div class="col-6">
-            <span>Alternativo</span>
-            <input class="input-image form-control" type="file"
-            (change)="onChange($event)">
+          <span> Nome do Produto</span>
+          <input class="nm-product mb-4 w-100" type="text" formControlName="nm_product">
+          <div class="row">
+            <div class="col-4">
+              <span>Estoque</span>
+              <input class="input-info w-100"  type="number" min="1" step="any" formControlName="inventory">
+            </div>
+            <div class="col-4">
+              <span>Preço</span>
+              <input class="input-info w-100" type="number" min="1" step="any" formControlName="price">
+            </div>
+            <div class="col-4 mb-5">
+              <span>Preço Promocional</span>
+              <input class="input-info w-100" type="number" min="1" step="any" formControlName="promotional_price">
+            </div>
+            <h2 class="mb-4">Informações Adicionais</h2>
+            <div class="col-12">
+              <span class="mb-1">Breve Descrição</span>
+              <textarea class="description w-100" name="description" id="description" cols="30" rows="10" formControlName="ds_product"></textarea>
+            </div>
           </div>
         </div>
-        <div clas="row">
-          <img src="assets/icons/alert.svg" alt="">
-          <span>Extensões permitidas *".jpg" e *".png"</span>
-          <span>Recomendamos uma dimensão mínima de 1000 x 1000</span>
-          <span>Tamanho máximo 2mb</span>
-
+        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <h2>Imagens Principais</h2>
+          <div class="row mb-5">
+            <div class="col-6">
+              <span>Principal</span>
+              <div class="container-img" #divBanner id="containerfile">
+                <input class="input-image form-control" type="file" #inputFile id="inputfile" accept="image/*" (change)="onFilePrincipalChange($event)" formControlName="principal_img">
+                <span class="input-ds" *ngIf="invalidImage == true"><label for="file">Selecione a imagem</label></span>
+              </div>
+            </div>
+            <div class="col-6">
+              <span>Alternativo</span>
+              <div class="container-img" #divBannerSecundary id="containerSecundaryfile">
+                <input class="input-image form-control" type="file" #inputSecundaryFile id="inputSecundaryFile"  accept="image/*" (change)="onFileSecundaryChange($event)" formControlName="secundary_img">
+                <span class="input-ds" *ngIf="invalidPImage == true"><label for="file">Selecione a imagem</label></span>
+              </div>
+            </div>
+          </div>
+          <div clas="row attention">
+            <img class="img-alert" src="assets/icons/alert.svg" alt="">
+            <span>Extensões permitidas *".jpg" e *".png"</span>
+            <span>Recomendamos uma dimensão mínima de 1000 x 1000</span>
+            <span>Tamanho máximo 2mb</span>
+          </div>
+          <div class="row submit-form">
+            <div class="div-cancel col-6">
+              <button (click)="cancel()" class="button-cancel">CANCELAR</button>
+            </div>
+            <div class="div-submit col-6">
+              <button type="submit" class="button-submit">SALVAR INFORMAÇÕES</button>
+            </div>
+          </div>
         </div>
-
       </div>
     </div>
-  </div>
+  </form>
 </div>

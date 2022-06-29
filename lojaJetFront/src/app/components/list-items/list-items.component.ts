@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductModel } from 'src/app/models/insertproduct.model';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -7,13 +8,14 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./list-items.component.scss']
 })
 export class ListItemsComponent implements OnInit {
-  products: any;
+  products: ProductModel[] = [];
   constructor(
     private srvc: ProductService
   ) { }
 
   ngOnInit(): void {
     this.srvc.GetProducts().subscribe((products: any) => {
+      console.log(products)
       this.products = products;
     });
   }

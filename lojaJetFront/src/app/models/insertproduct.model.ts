@@ -1,4 +1,4 @@
-export class InsertProductModel{
+export class ProductModel{
   nm_product!: string;
   principal_img: any;
   secundary_img: any;

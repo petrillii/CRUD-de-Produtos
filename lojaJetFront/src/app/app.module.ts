@@ -9,6 +9,8 @@ import { ListItemsComponent } from './components/list-items/list-items.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateItemComponent } from './components/create-item/create-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SafeHtmlPipe } from './pipe/safe-html.pipe';
 
 
 @NgModule({
@@ -17,13 +19,15 @@ import { CreateItemComponent } from './components/create-item/create-item.compon
     HeaderComponent,
     FooterComponent,
     ListItemsComponent,
-    CreateItemComponent
+    CreateItemComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -23,18 +23,19 @@ namespace LojaJet.Controllers
         [HttpGet]
         public async Task<IActionResult> GetProducts()
         {
-            return Ok();
+            return Ok(await srvc.GetProducts());
         }
-        [HttpPost("{id}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById()
         {
             return Ok();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromBody]ProductDto product)
+        public async Task<IActionResult> CreateProduct([FromForm]ProductDto product)
         {
             try
             {
+                await srvc.CreateProduct(product);
                 return Ok("Produto criado com sucesso!");
             }
             catch (ArgumentException ex)
