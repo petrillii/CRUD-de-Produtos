@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from 'src/app/services/product.service';
@@ -18,7 +18,7 @@ export class CreateItemComponent implements OnInit {
   img_secundary!: File;
   invalidImage: boolean = true;
   invalidPImage: boolean = true;
-  form: UntypedFormGroup = this.getForm();
+  form: FormGroup = this.getForm();
   constructor(
     private router: Router,
     private srvc: ProductService,
@@ -28,16 +28,16 @@ export class CreateItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getForm(): UntypedFormGroup{
-    return new UntypedFormGroup({
-      status: new UntypedFormControl(false, [Validators.required]),
-      nm_product: new UntypedFormControl('', [Validators.required]),
-      inventory: new UntypedFormControl('', [Validators.required]),
-      price: new UntypedFormControl('',[Validators.required]),
-      promocional_price: new UntypedFormControl('', [Validators.required]),
-      ds_product: new UntypedFormControl('', [Validators.required]),
-      img_principal: new UntypedFormControl(this.img_principal, [Validators.required]),
-      img_secundary: new UntypedFormControl(this.img_secundary, [Validators.required]),
+  getForm(): FormGroup{
+    return new FormGroup({
+      status: new FormControl(false, [Validators.required]),
+      nm_product: new FormControl('', [Validators.required]),
+      inventory: new FormControl('', [Validators.required]),
+      price: new FormControl('',[Validators.required]),
+      promocional_price: new FormControl('', [Validators.required]),
+      ds_product: new FormControl('', [Validators.required]),
+      img_principal: new FormControl(this.img_principal, [Validators.required]),
+      img_secundary: new FormControl(this.img_secundary, [Validators.required]),
     })
   }
 
@@ -120,7 +120,7 @@ export class CreateItemComponent implements OnInit {
     formData.append('nm_product', form.nm_product);
     formData.append('img_principal', this.img_principal);
     formData.append('img_secundary', this.img_secundary);
-    formData.append('ds_product', form.description);
+    formData.append('ds_product', form.ds_product);
     formData.append('inventory', form.inventory);
     formData.append('status', form.status);
     formData.append('price', form.price);

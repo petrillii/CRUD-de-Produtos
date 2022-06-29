@@ -1,12 +1,18 @@
 @import 'src/variables.scss';
 .card{
+  cursor:pointer;
   background-color: rgb(232, 232, 232);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .product-img{
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 17.25rem;
+  border-radius: .625rem;
 }
 .title{
   font-size: 14px;
@@ -17,5 +23,11 @@
 
 }
 .original-price{
-  font-size: 14px;
+  font-size: 12px;
+  color: rgb(120, 119, 119);
+}
+
+.img-bg{
+  width: 170px;
+  height: 170px;
 }

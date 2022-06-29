@@ -16,20 +16,21 @@
           <div class="row">
             <div class="col-4">
               <span>Estoque</span>
-              <input class="input-info w-100"  type="number" min="1" step="any" formControlName="inventory">
+              <input class="input-info w-100" type="number" min="1" step="any" formControlName="inventory">
             </div>
             <div class="col-4">
               <span>Preço</span>
-              <input class="input-info w-100" type="number" min="1" step="any" formControlName="price">
+              <input class="input-info w-100" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" type="text"  step="any"  formControlName="price">
             </div>
             <div class="col-4 mb-5">
               <span>Preço Promocional</span>
-              <input class="input-info w-100" type="number" min="1" step="any" formControlName="promocional_price">
+              <input class="input-info w-100" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" type="text" step="any" formControlName="promocional_price">
             </div>
             <h2 class="mb-4">Informações Adicionais</h2>
             <div class="col-12">
               <span class="mb-1">Breve Descrição</span>
-              <textarea class="description w-100" name="description" id="description" cols="30" rows="10" formControlName="ds_product"></textarea>
+              <textarea class="description w-100" name="description" id="description" cols="30" rows="10"
+                formControlName="ds_product"></textarea>
             </div>
           </div>
         </div>
@@ -39,23 +40,39 @@
             <div class="col-6">
               <span>Principal</span>
               <div class="container-img" #divBanner id="containerfile">
-                <input class="input-image form-control" type="file" #inputFile id="inputfile" accept="image/*" (change)="onFilePrincipalChange($event)" formControlName="img_principal">
-                <span class="input-ds" *ngIf="invalidImage == true"><label for="file">Selecione a imagem</label></span>
+                <input class="input-image form-control" type="file" #inputFile id="inputfile" accept="image/*"
+                  (change)="onFilePrincipalChange($event)" formControlName="img_principal">
+                <span class="input-ds" *ngIf="invalidImage"><label for="file">Selecione a imagem</label></span>
+              </div>
+              <div *ngIf="invalidImage && form.controls['img_principal'].dirty" class="d-flex justify-content-center">
+                <label>Selecione uma imagem válida!</label>
               </div>
             </div>
             <div class="col-6">
               <span>Alternativo</span>
               <div class="container-img" #divBannerSecundary id="containerSecundaryfile">
-                <input class="input-image form-control" type="file" #inputSecundaryFile id="inputSecundaryFile"  accept="image/*" (change)="onFileSecundaryChange($event)" formControlName="img_secundary">
-                <span class="input-ds" *ngIf="invalidPImage == true"><label for="file">Selecione a imagem</label></span>
+                <input class="input-image form-control" type="file" #inputSecundaryFile id="inputSecundaryFile"
+                  accept="image/*" (change)="onFileSecundaryChange($event)" formControlName="img_secundary">
+                <span class="input-ds" *ngIf="invalidPImage"><label for="file">Selecione a imagem</label></span>
+              </div>
+              <div *ngIf="invalidPImage && form.controls['img_secundary'].dirty" class="d-flex justify-content-center">
+                <label>Selecione uma imagem válida!</label>
               </div>
             </div>
           </div>
-          <div clas="row attention">
-            <img class="img-alert" src="assets/icons/alert.svg" alt="">
-            <span>Extensões permitidas *".jpg" e *".png"</span>
-            <span>Recomendamos uma dimensão mínima de 1000 x 1000</span>
-            <span>Tamanho máximo 2mb</span>
+          <div clas="row">
+            <div class="col-12">
+              <img class="img-alert" src="assets/icons/alert.svg" alt="">
+            </div>
+            <div class="col-12">
+              <span>Extensões permitidas *".jpg" e *".png"</span>
+            </div>
+            <div class="col-12">
+              <span>Recomendamos uma dimensão mínima de 1000 x 1000</span>
+            </div>
+            <div class="col-12">
+              <span>Tamanho máximo 2mb</span>
+            </div>
           </div>
           <div class="row submit-form">
             <div class="div-cancel col-6">

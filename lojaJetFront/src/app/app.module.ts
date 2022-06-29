@@ -12,6 +12,7 @@ import { CreateItemComponent } from './components/create-item/create-item.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     HttpClientModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+    CurrencyMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]
