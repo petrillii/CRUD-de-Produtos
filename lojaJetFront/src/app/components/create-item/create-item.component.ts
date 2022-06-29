@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from 'src/app/services/product.service';
@@ -18,7 +18,7 @@ export class CreateItemComponent implements OnInit {
   img_secundary!: File;
   invalidImage: boolean = true;
   invalidPImage: boolean = true;
-  form: FormGroup = this.getForm();
+  form: UntypedFormGroup = this.getForm();
   constructor(
     private router: Router,
     private srvc: ProductService,
@@ -28,16 +28,16 @@ export class CreateItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getForm(): FormGroup{
-    return new FormGroup({
-      status: new FormControl(false, [Validators.required]),
-      nm_product: new FormControl('', [Validators.required]),
-      inventory: new FormControl('', [Validators.required]),
-      price: new FormControl('',[Validators.required]),
-      promotional_price: new FormControl('', [Validators.required]),
-      ds_product: new FormControl('', [Validators.required]),
-      img_principal: new FormControl(this.img_principal, [Validators.required]),
-      img_secundary: new FormControl(this.img_secundary, [Validators.required]),
+  getForm(): UntypedFormGroup{
+    return new UntypedFormGroup({
+      status: new UntypedFormControl(false, [Validators.required]),
+      nm_product: new UntypedFormControl('', [Validators.required]),
+      inventory: new UntypedFormControl('', [Validators.required]),
+      price: new UntypedFormControl('',[Validators.required]),
+      promocional_price: new UntypedFormControl('', [Validators.required]),
+      ds_product: new UntypedFormControl('', [Validators.required]),
+      img_principal: new UntypedFormControl(this.img_principal, [Validators.required]),
+      img_secundary: new UntypedFormControl(this.img_secundary, [Validators.required]),
     })
   }
 
@@ -124,11 +124,15 @@ export class CreateItemComponent implements OnInit {
     formData.append('inventory', form.inventory);
     formData.append('status', form.status);
     formData.append('price', form.price);
-    formData.append('promotional_price', form.promotional_price);
+    formData.append('promocional_price', form.promocional_price);
     console.log(formData);
     this.srvc.InsertProduct(formData).subscribe({
       error: (error: any) => {
-        this.toastr.error(error.error, 'Erro');
+        console.log(error)
+        this.toastr.error(error.message, 'Erro ao cadastrar o novo produto');
+      },
+      complete: () => {
+        this.toastr.success('Produto cadastrado com sucesso!');
       },
       next: (res: string) => {
         this.toastr.success(res, 'Produto cadastrado com sucesso!');

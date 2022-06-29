@@ -3,14 +3,14 @@
     <div *ngFor="let product of products" class="col-sm-12 col-md-4 col-lg-2 mb-3">
       <div class="card">
         <div class="product-img">
-          <img src="data:image/png;base64, {{product.principal_img}} | safeHtml" alt="item"/>
+          <div [innerHTML]="product.principal_img | safeHtml"></div>
         </div>
         <div class="title">
-          aaaa
+          <label>{{product.nm_product}}</label>
         </div>
         <div class="price">
-          <label class="promotional-price mr-3">aaa</label>
-          <label class="original-price">aaa</label>
+          <label class="promotional-price mr-3">{{product.price}}</label>
+          <label class="original-price">{{product.promocional_price}}</label>
         </div>
       </div>
     </div>
