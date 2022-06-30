@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 10px;
 }
 .product-img{
   display: flex;
@@ -28,6 +29,7 @@
 }
 
 .img-bg{
-  width: 170px;
-  height: 170px;
+  width: 172px;
+  height: 172px;
+  border-radius: 8px;
 }

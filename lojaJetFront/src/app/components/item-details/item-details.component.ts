@@ -10,20 +10,19 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ItemDetailsComponent implements OnInit {
   idProduct!: number;
-  /* product: ProductModel = new ProductModel(); */
+  product: ProductModel = new ProductModel();
   constructor(
     private srvc: ProductService,
     private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-   /*  this.route.params.subscribe(params => {
+  this.route.params.subscribe(params => {
       this.idProduct = params['id'];
       this.srvc.GetProductById(this.idProduct).subscribe((productInfo)=>{
-        this.product = productInfo;
         console.log(productInfo)
       });
-    }); */
+    });
   }
 
 }
